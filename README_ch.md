@@ -1,6 +1,6 @@
 [English](README.md) | 简体中文
 
-> 移除[PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)其他代码，
+> 移除[PaddleOCR ppstructure](https://github.com/PaddlePaddle/PaddleOCR/tree/release/2.7/ppstructure)其他代码，
 仅保留表格识别和提取的部分，未做其他任何改变
 
 # 表格识别
@@ -66,8 +66,6 @@ PP-Structure目前提供了中英文两种语言的表格识别模型，模型�
 
 使用如下命令即可快速完成一张表格的识别。
 ```python
-cd PaddleOCR/ppstructure
-
 # 下载模型
 mkdir inference && cd inference
 # 下载PP-OCRv3文本检测模型并解压

@@ -1,3 +1,5 @@
+Simplify the original project [PaddleOCR ppstructure](https://github.com/PaddlePaddle/PaddleOCR/tree/release/2.7/ppstructure)
+
 English | [简体中文](README_ch.md)
 
 # Table Recognition
@@ -58,8 +60,6 @@ The following takes the Chinese table recognition model as an example to introdu
 Use the following commands to quickly complete the identification of a table.
 
 ```python
-cd PaddleOCR/ppstructure
-
 # download model
 mkdir inference && cd inference
 # Download the PP-OCRv3 text detection model and unzip it
