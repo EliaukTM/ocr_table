@@ -1,0 +1,13 @@
+rapidfuzz
+paddlepaddle-gpu
+openpyxl
+premailer
+lxml
+shapely
+numpy
+opencv-python<=4.6.0.66
+opencv-contrib-python<=4.6.0.66
+cython
+tqdm
+six
+pyclipper
