@@ -22,7 +22,7 @@ The table recognition mainly contains three models
 
 The table recognition flow chart is as follows
 
-![tableocr_pipeline](../docs/table/tableocr_pipeline_en.jpg)
+![tableocr_pipeline](docs/table/tableocr_pipeline_en.jpg)
 
 1. The coordinates of single-line text is detected by DB model, and then sends it to the recognition model to get the recognition result.
 2. The table structure and cell coordinates is predicted by SLANet model.
@@ -110,13 +110,13 @@ python3 ppstructure/table/convert_label2html.py --ori_gt_path /path/to/your_labe
 
 Use the following command to evaluate. After the evaluation is completed, the teds indicator will be output.
 ```python
-python3 table/eval_table.py \
+python3 eval_table.py \
     --det_model_dir=path/to/det_model_dir \
     --rec_model_dir=path/to/rec_model_dir \
     --table_model_dir=path/to/table_model_dir \
     --image_dir=docs/table/table.jpg \
-    --rec_char_dict_path=../ppocr/utils/dict/table_dict.txt \
-    --table_char_dict_path=../ppocr/utils/dict/table_structure_dict.txt \
+    --rec_char_dict_path=ppocr/table_dict.txt \
+    --table_char_dict_path=ppocr/table_structure_dict.txt \
     --det_limit_side_len=736 \
     --det_limit_type=min \
     --gt_path=path/to/gt.txt
@@ -125,7 +125,6 @@ python3 table/eval_table.py \
 Evaluate on the PubLatNet dataset using the English model
 
 ```bash
-cd PaddleOCR/ppstructure
 # Download the model
 mkdir inference && cd inference
 # Download the text detection model trained on the PubTabNet dataset and unzip it
@@ -136,13 +135,13 @@ wget https://paddleocr.bj.bcebos.com/dygraph_v2.0/table/en_ppocr_mobile_v2.0_tab
 wget https://paddleocr.bj.bcebos.com/ppstructure/models/slanet/en_ppstructure_mobile_v2.0_SLANet_infer.tar && tar xf en_ppstructure_mobile_v2.0_SLANet_infer.tar
 cd ..
 
-python3 table/eval_table.py \
+python3 eval_table.py \
     --det_model_dir=inference/en_ppocr_mobile_v2.0_table_det_infer \
     --rec_model_dir=inference/en_ppocr_mobile_v2.0_table_rec_infer \
     --table_model_dir=inference/en_ppstructure_mobile_v2.0_SLANet_infer \
     --image_dir=train_data/table/pubtabnet/val/ \
-    --rec_char_dict_path=../ppocr/utils/dict/table_dict.txt \
-    --table_char_dict_path=../ppocr/utils/dict/table_structure_dict.txt \
+    --rec_char_dict_path=ppocr/table_dict.txt \
+    --table_char_dict_path=ppocr/table_structure_dict.txt \
     --det_limit_side_len=736 \
     --det_limit_type=min \
     --rec_image_shape=3,32,320 \

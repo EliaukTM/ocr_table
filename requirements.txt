@@ -2,7 +2,7 @@ rapidfuzz
 paddlepaddle-gpu
 openpyxl
 premailer
-lxml
+lxml==5.2.0
 shapely
 numpy
 opencv-python<=4.6.0.66

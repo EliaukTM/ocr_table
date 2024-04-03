@@ -24,7 +24,7 @@
 
 具体流程图如下
 
-![tableocr_pipeline](../docs/table/tableocr_pipeline.jpg)
+![tableocr_pipeline](docs/table/tableocr_pipeline.jpg)
 
 流程说明:
 
@@ -115,14 +115,13 @@ python3 ppstructure/table/convert_label2html.py --ori_gt_path /path/to/your_labe
 
 准备完成后使用如下命令进行评估，评估完成后会输出teds指标。
 ```python
-cd PaddleOCR/ppstructure
-python3 table/eval_table.py \
+python3 eval_table.py \
     --det_model_dir=path/to/det_model_dir \
     --rec_model_dir=path/to/rec_model_dir \
     --table_model_dir=path/to/table_model_dir \
     --image_dir=docs/table/table.jpg \
-    --rec_char_dict_path=../ppocr/utils/dict/table_dict.txt \
-    --table_char_dict_path=../ppocr/utils/dict/table_structure_dict.txt \
+    --rec_char_dict_path=ppocr/table_dict.txt \
+    --table_char_dict_path=ppocr/table_structure_dict.txt \
     --det_limit_side_len=736 \
     --det_limit_type=min \
     --gt_path=path/to/gt.txt
@@ -131,7 +130,6 @@ python3 table/eval_table.py \
 如使用英文表格识别模型在PubLatNet数据集上进行评估
 
 ```bash
-cd PaddleOCR/ppstructure
 # 下载模型
 mkdir inference && cd inference
 # 下载基于PubTabNet数据集训练的文本检测模型并解压
@@ -142,13 +140,13 @@ wget https://paddleocr.bj.bcebos.com/dygraph_v2.0/table/en_ppocr_mobile_v2.0_tab
 wget https://paddleocr.bj.bcebos.com/ppstructure/models/slanet/en_ppstructure_mobile_v2.0_SLANet_infer.tar && tar xf en_ppstructure_mobile_v2.0_SLANet_infer.tar
 cd ..
 
-python3 table/eval_table.py \
+python3 eval_table.py \
     --det_model_dir=inference/en_ppocr_mobile_v2.0_table_det_infer \
     --rec_model_dir=inference/en_ppocr_mobile_v2.0_table_rec_infer \
     --table_model_dir=inference/en_ppstructure_mobile_v2.0_SLANet_infer \
     --image_dir=train_data/table/pubtabnet/val/ \
-    --rec_char_dict_path=../ppocr/utils/dict/table_dict.txt \
-    --table_char_dict_path=../ppocr/utils/dict/table_structure_dict.txt \
+    --rec_char_dict_path=ppocr/table_dict.txt \
+    --table_char_dict_path=ppocr/table_structure_dict.txt \
     --det_limit_side_len=736 \
     --det_limit_type=min \
     --rec_image_shape=3,32,320 \
